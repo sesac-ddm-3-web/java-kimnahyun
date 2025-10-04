@@ -1,4 +1,4 @@
-package part15;
+package exam.part15;
 
 import java.util.HashMap;
 import java.util.Map;
