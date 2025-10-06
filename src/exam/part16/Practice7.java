@@ -56,7 +56,6 @@ public class Practice7 {
 //            avgSalaryByDept.put(entry.getKey(), sum / entry.getValue().size());
 //        }
 
-
         System.out.println(avgSalaryByDept);
         // {인사팀=5300.0, 개발팀=5750.0, 기획팀=6000.0}
     }
