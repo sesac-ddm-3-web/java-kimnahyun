@@ -51,15 +51,4 @@ public class Calculator {
         }
         return expression.get(0);
     }
-
-    /*
-    question split해서 list<>에 넣기
-    -> 거기서 * / 있는지 for문 순회
-    -> 있으면 앞뒤 문자 불러와서 int로 변환
-    -> 해당하는 operator로 계산
-    -> 그 전 위치에 넣고 계속 순회
-    ->-> 그다음 +-있는지 for문 순회
-    -> 해당 계산하고 값 넣기
-    -> list 사이즈 1일때까지 반복
-     */
 }
