@@ -1,3 +1,5 @@
+package menu;
+
 public enum MenuCategory {
     MAIN_DISH("메인 요리"),
     SIDE_DISH("사이드 메뉴"),
