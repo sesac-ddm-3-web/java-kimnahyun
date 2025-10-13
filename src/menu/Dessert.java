@@ -10,13 +10,6 @@ public class Dessert extends MenuItem {
         this.allergyInfo = allergyInfo;
     }
 
-    /*
-        6. 초코케이크 - 7,000원
-       설명: 디저트 - 초코케이크 (당도: MEDIUM, 알레르기: 밀, 우유, 계란)
-       조리시간: 3분
-       재고: 8개
-       주문가능: ⭕
-         */
     @Override
     public void getDescription() {
         // 당도, 알레르기 정보
@@ -32,5 +25,4 @@ public class Dessert extends MenuItem {
             System.out.println("❌ (재고 부족)");
         }
     }
-
 }

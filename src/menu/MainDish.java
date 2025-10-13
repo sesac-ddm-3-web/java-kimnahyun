@@ -2,14 +2,6 @@ package menu;
 
 public class MainDish extends MenuItem {
 
-    /*
-    1. 스테이크 - 25,000원
-   설명: 메인 요리 - 스테이크 (난이도: HIGH, 800kcal)
-   조리시간: 30분
-   재고: 5개
-   주문가능: ⭕
-     */
-
     private String difficulty;
     private int calory;
 

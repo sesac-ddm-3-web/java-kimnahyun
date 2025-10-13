@@ -10,13 +10,6 @@ public class Beverage extends MenuItem {
         this.temperature = temperature;
     }
 
-    /*
-        5. 콜라 - 3,000원
-       설명: 음료 - 콜라 (500ml, COLD)
-       조리시간: 2분
-       재고: 25개
-       주문가능: ⭕
-         */
     @Override
     public void getDescription() {
         // 용량, 온도
