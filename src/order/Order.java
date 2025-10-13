@@ -9,10 +9,12 @@ public class Order {
     private String orderId;
     private List<OrderItem> items;
     private LocalDateTime orderTime;
+    private int sumPrice;
 
     public Order(String orderId) {
         this.orderId = orderId;
         this.orderTime = LocalDateTime.now();
+        this.sumPrice = 0;
     }
 
     // 장바구니에 메뉴 추가
@@ -25,7 +27,6 @@ public class Order {
         System.out.println("===== 장바구니 =====");
 
         int i = 1;
-        int sumPrice = 0;
         int maxCookingTime = 0;
 
         for (OrderItem item : items) {
@@ -44,6 +45,21 @@ public class Order {
         System.out.println("예상 조리 시간 : " + maxCookingTime + "분");
     }
 
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public LocalDateTime getOrderTime() {
+        return orderTime;
+    }
+
+    public int getSumPrice() {
+        return sumPrice;
+    }
 }
 
 /*
