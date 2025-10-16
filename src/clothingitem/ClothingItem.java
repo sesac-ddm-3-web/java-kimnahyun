@@ -6,7 +6,7 @@ import option.Style;
 
 import java.util.Set;
 
-public class ClothingItem {
+public abstract class ClothingItem {
     String name;
     Set<Gender> gender;
     Set<Season> season;

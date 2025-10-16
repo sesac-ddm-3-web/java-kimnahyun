@@ -35,7 +35,12 @@ public class OutfitGenerator {
         Shoes shoes = (Shoes) pickRandom(shoesList);
         Accessory accessory = (Accessory) pickRandom(accessories);
 
-        return new Outfit(top, bottom, shoes, accessory);
+        Outfit outfit = new Outfit(top, bottom, shoes, accessory);
+
+        String myOptions = gender + " / " + style + " / " + season;
+        repository.addMyOufit(myOptions, outfit);
+
+        return outfit;
     }
 
     private ClothingItem pickRandom(List<ClothingItem> item) {

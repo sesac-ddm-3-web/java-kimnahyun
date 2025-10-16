@@ -1,15 +1,16 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class View {
     Scanner sc = new Scanner(System.in);
 
     public void displayMenu() { // 시작 화면
-        System.out.println("===== 랜덤 코디 추천 =====\n" +
+        System.out.println(
                 "1. 코디 추천 받기\n" +
-                "2. 코디 히스토리 보기\n" +
-                "3. 종료");
+                        "2. 코디 히스토리 보기\n" +
+                        "3. 종료");
         System.out.print("선택 : ");
     }
 
@@ -26,10 +27,16 @@ public class View {
     }
 
     public void showRandomOutfit(Outfit outfit) {
-        System.out.println("==== 오늘의 추천 코디 ====");
-        System.out.println("상의 : " + outfit.top.getName());
-        System.out.println("하의 : " + outfit.bottom.getName());
-        System.out.println("신발 : " + outfit.shoes.getName());
-        System.out.println("악세사리 : " + outfit.accessory.getName());
+        System.out.println("\uD83D\uDC5A 상의 : " + outfit.top.getName());
+        System.out.println("\uD83D\uDC56 하의 : " + outfit.bottom.getName());
+        System.out.println("\uD83D\uDC5F 신발 : " + outfit.shoes.getName());
+        System.out.println("\uD83D\uDD76 악세사리 : " + outfit.accessory.getName() + "\n");
+    }
+
+    public void showMyOutfit(Map<String, Outfit> myOutfits) {
+        myOutfits.forEach((key, outfit) -> {
+            System.out.println("[" + key + "]");
+            showRandomOutfit(outfit);
+        });
     }
 }
