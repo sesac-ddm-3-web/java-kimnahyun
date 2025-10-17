@@ -9,6 +9,8 @@ public class Main {
         ClothingRepository repository = new ClothingRepository(); // 샘플 데이터 추가
 
         boolean play = true;
+
+        System.out.println("===== 랜덤 코디 추천 =====");
         while (play) {
             view.displayMenu();
             int choice = sc.nextInt();
@@ -22,11 +24,11 @@ public class Main {
                     Outfit outfit = generator.generateOutfit(optionInput.get(0), optionInput.get(1), optionInput.get(2));
 
                     // 3. View 생성 및 저장
-                    System.out.println("\n====  오늘의 추천 코디 ====");
+                    System.out.println("\n==== 오늘의 추천 코디 ====");
                     view.showRandomOutfit(outfit);
                     break;
                 case 2:
-                    Map<String, Outfit> myOutfits = repository.getMyOutfits();
+                    Map<String, List<Outfit>> myOutfits = repository.getMyOutfits();
                     view.showMyOutfit(myOutfits);
                     break;
                 case 3:

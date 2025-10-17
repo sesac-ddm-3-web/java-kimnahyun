@@ -30,13 +30,17 @@ public class View {
         System.out.println("\uD83D\uDC5A 상의 : " + outfit.top.getName());
         System.out.println("\uD83D\uDC56 하의 : " + outfit.bottom.getName());
         System.out.println("\uD83D\uDC5F 신발 : " + outfit.shoes.getName());
-        System.out.println("\uD83D\uDD76 악세사리 : " + outfit.accessory.getName() + "\n");
+        System.out.println("\uD83D\uDD76 악세사리 : " + outfit.accessory.getName());
+        System.out.println("-----------------------\n");
     }
 
-    public void showMyOutfit(Map<String, Outfit> myOutfits) {
-        myOutfits.forEach((key, outfit) -> {
+    public void showMyOutfit(Map<String, List<Outfit>> myOutfits) {
+        myOutfits.forEach((key, outfitList) -> {
             System.out.println("[" + key + "]");
-            showRandomOutfit(outfit);
+
+            for (Outfit outfit : outfitList) {
+                showRandomOutfit(outfit);
+            }
         });
     }
 }

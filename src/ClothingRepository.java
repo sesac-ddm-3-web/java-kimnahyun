@@ -8,7 +8,7 @@ import java.util.*;
 public class ClothingRepository {
 
     List<ClothingItem> items = new ArrayList<>();
-    Map<String, Outfit> myOutfits = new LinkedHashMap<>();
+    Map<String, List<Outfit>> myOutfits = new LinkedHashMap<>();
 
     public List<ClothingItem> filterClothes(String gender, String style, String season) {
         List<ClothingItem> matched = new ArrayList<>();
@@ -21,10 +21,15 @@ public class ClothingRepository {
     }
 
     public void addMyOufit(String myOptions, Outfit outfit) {
-        myOutfits.put(myOptions, outfit);
+        if (!myOutfits.containsKey(myOptions)) {
+            myOutfits.put(myOptions, new ArrayList<Outfit>());
+        }
+
+        List<Outfit> outfitList = myOutfits.get(myOptions);
+        outfitList.add(outfit);
     }
 
-    public Map<String, Outfit> getMyOutfits() {
+    public Map<String, List<Outfit>> getMyOutfits() {
         return myOutfits;
     }
 
@@ -395,7 +400,7 @@ public class ClothingRepository {
         items.add(new Shoes(
                 "검은 구두",
                 EnumSet.allOf(Gender.class),
-                EnumSet.of(Season.SPRING, Season.FALL, Season.WINTER),
+                EnumSet.allOf(Season.class),
                 EnumSet.of(Style.OFFICE, Style.PARTY, Style.DATE),
                 "Black",
                 "Shoes"
@@ -421,7 +426,7 @@ public class ClothingRepository {
         items.add(new Shoes(
                 "블랙 하이힐",
                 EnumSet.of(Gender.FEMALE),
-                EnumSet.of(Season.SPRING, Season.SUMMER),
+                EnumSet.allOf(Season.class),
                 EnumSet.of(Style.DATE, Style.PARTY),
                 "Black",
                 "Shoes"
@@ -430,16 +435,16 @@ public class ClothingRepository {
         items.add(new Shoes(
                 "레드 하이힐",
                 EnumSet.of(Gender.FEMALE),
-                EnumSet.of(Season.SPRING, Season.SUMMER),
+                EnumSet.allOf(Season.class),
                 EnumSet.of(Style.DATE, Style.PARTY),
                 "Red",
                 "Shoes"
         ));
 
         items.add(new Shoes(
-                "워커 부츠",
+                "블랙 워커",
                 EnumSet.allOf(Gender.class),
-                EnumSet.of(Season.FALL, Season.WINTER),
+                EnumSet.of(Season.SPRING, Season.FALL, Season.WINTER),
                 EnumSet.of(Style.CASUAL, Style.PARTY, Style.DATE),
                 "Black",
                 "Shoes"
