@@ -13,14 +13,16 @@ public abstract class ClothingItem {
     Set<Style> style;
     String color;
     String category;
+    String imagePath;
 
-    public ClothingItem(String name, Set<Gender> gender, Set<Season> season, Set<Style> style, String color, String category) {
+    public ClothingItem(String name, Set<Gender> gender, Set<Season> season, Set<Style> style, String color, String category, String imagePath) {
         this.name = name;
         this.gender = gender;
         this.season = season;
         this.style = style;
         this.color = color;
         this.category = category;
+        this.imagePath = imagePath;
     }
 
     public boolean matches(String gender, String style, String season) {
@@ -32,7 +34,16 @@ public abstract class ClothingItem {
     public String getName() {
         return name;
     }
+
     public String getCategory() {
         return category;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

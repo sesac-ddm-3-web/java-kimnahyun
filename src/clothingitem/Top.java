@@ -7,7 +7,7 @@ import option.Style;
 import java.util.Set;
 
 public class Top extends ClothingItem {
-    public Top(String name, Set<Gender> gender, Set<Season> season, Set<Style> style, String color, String category) {
-        super(name, gender, season, style, color, category);
+    public Top(String name, Set<Gender> gender, Set<Season> season, Set<Style> style, String color, String category, String imagePath) {
+        super(name, gender, season, style, color, category, imagePath);
     }
 }

@@ -7,6 +7,7 @@ public class Main {
 
         // 1. Repository 생성 및 데이터 초기화
         ClothingRepository repository = new ClothingRepository(); // 샘플 데이터 추가
+        ImageResolver.fillMissingPaths(repository.getAllItems()); // 이미지 경로 추가
 
         boolean play = true;
 
@@ -26,8 +27,11 @@ public class Main {
                     // 3. View 생성 및 저장
                     System.out.println("\n==== 오늘의 추천 코디 ====");
                     view.showRandomOutfit(outfit);
+                    ImageViewer.showOutfit(outfit);
+
                     break;
                 case 2:
+                    System.out.println("\n==== 코디 히스토리 ====");
                     Map<String, List<Outfit>> myOutfits = repository.getMyOutfits();
                     view.showMyOutfit(myOutfits);
                     break;
@@ -40,7 +44,5 @@ public class Main {
                     break;
             }
         }
-
-
     }
 }

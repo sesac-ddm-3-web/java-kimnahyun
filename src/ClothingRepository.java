@@ -33,6 +33,10 @@ public class ClothingRepository {
         return myOutfits;
     }
 
+    public List<ClothingItem> getAllItems() {
+        return items;
+    }
+
     public ClothingRepository() {
         // 상의 -------------------------------------
         items.add(new Top(
@@ -41,7 +45,8 @@ public class ClothingRepository {
                 EnumSet.of(Season.SPRING, Season.SUMMER),
                 EnumSet.of(Style.CASUAL, Style.SPORTS),
                 "White",
-                "Top"
+                "Top",
+                null
         ));
 
         items.add(new Top(
@@ -50,7 +55,8 @@ public class ClothingRepository {
                 EnumSet.of(Season.FALL, Season.WINTER),
                 EnumSet.of(Style.CASUAL, Style.SPORTS, Style.DATE, Style.OFFICE),
                 "White",
-                "Top"
+                "Top",
+                null
         ));
 
         items.add(new Top(
@@ -59,7 +65,8 @@ public class ClothingRepository {
                 EnumSet.of(Season.FALL, Season.WINTER),
                 EnumSet.of(Style.CASUAL, Style.SPORTS, Style.DATE, Style.OFFICE),
                 "Black",
-                "Top"
+                "Top",
+                null
         ));
 
         items.add(new Top(
@@ -68,7 +75,8 @@ public class ClothingRepository {
                 EnumSet.of(Season.SUMMER),
                 EnumSet.of(Style.CASUAL, Style.SPORTS, Style.DATE),
                 "Black",
-                "Top"
+                "Top",
+                null
         ));
         items.add(new Top(
                 "핑크 반팔 티셔츠",
@@ -76,16 +84,18 @@ public class ClothingRepository {
                 EnumSet.of(Season.SUMMER),
                 EnumSet.of(Style.CASUAL, Style.SPORTS, Style.DATE),
                 "Pink",
-                "Top"
+                "Top",
+                null
         ));
 
         items.add(new Top(
-                "검은 크롭티",
+                "검정 크롭티",
                 EnumSet.of(Gender.FEMALE),
                 EnumSet.of(Season.SUMMER),
                 EnumSet.of(Style.PARTY, Style.DATE),
                 "Black",
-                "Top"
+                "Top",
+                null
         ));
 
         items.add(new Top(
@@ -94,7 +104,8 @@ public class ClothingRepository {
                 EnumSet.of(Season.SPRING, Season.FALL, Season.WINTER),
                 EnumSet.of(Style.OFFICE, Style.DATE),
                 "White",
-                "Top"
+                "Top",
+                null
         ));
 
         items.add(new Top(
@@ -103,7 +114,8 @@ public class ClothingRepository {
                 EnumSet.of(Season.SPRING, Season.FALL, Season.WINTER),
                 EnumSet.of(Style.OFFICE, Style.DATE),
                 "Sky Blue",
-                "Top"
+                "Top",
+                null
         ));
 
         items.add(new Top(
@@ -112,7 +124,8 @@ public class ClothingRepository {
                 EnumSet.of(Season.FALL, Season.WINTER),
                 EnumSet.of(Style.CASUAL, Style.SPORTS),
                 "Gray",
-                "Top"
+                "Top",
+                null
         ));
 
         items.add(new Top(
@@ -121,7 +134,8 @@ public class ClothingRepository {
                 EnumSet.of(Season.FALL, Season.WINTER),
                 EnumSet.of(Style.CASUAL, Style.OFFICE),
                 "Navy",
-                "Top"
+                "Top",
+                null
         ));
 
         items.add(new Top(
@@ -130,25 +144,28 @@ public class ClothingRepository {
                 EnumSet.of(Season.FALL, Season.WINTER),
                 EnumSet.of(Style.CASUAL, Style.SPORTS),
                 "White",
-                "Top"
+                "Top",
+                null
         ));
 
         items.add(new Top(
-                "검은 니트 ",
+                "검은 니트",
                 EnumSet.of(Gender.MALE, Gender.FEMALE),
                 EnumSet.of(Season.SPRING, Season.FALL, Season.WINTER),
                 EnumSet.of(Style.CASUAL, Style.DATE),
                 "Black",
-                "Top"
+                "Top",
+                null
         ));
 
         items.add(new Top(
-                "베이지 니트 ",
+                "베이지 니트",
                 EnumSet.of(Gender.MALE, Gender.FEMALE),
                 EnumSet.of(Season.SPRING, Season.FALL, Season.WINTER),
                 EnumSet.of(Style.CASUAL, Style.DATE),
                 "Beige",
-                "Top"
+                "Top",
+                null
         ));
 
         items.add(new Top(
@@ -157,34 +174,48 @@ public class ClothingRepository {
                 EnumSet.of(Season.SPRING, Season.FALL),
                 EnumSet.of(Style.CASUAL, Style.DATE),
                 "Beige",
-                "Top"
+                "Top",
+                null
         ));
 
         items.add(new Top(
-                "화이트 린넨 셔츠",
+                "화이트 반팔 셔츠",
                 EnumSet.of(Gender.MALE, Gender.FEMALE),
                 EnumSet.of(Season.SUMMER),
                 EnumSet.of(Style.OFFICE, Style.DATE),
                 "White",
-                "Top"
+                "Top",
+                null
         ));
 
         items.add(new Top(
-                "네이비 폴로 셔츠",
+                "네이비 셔츠",
                 EnumSet.of(Gender.MALE, Gender.FEMALE),
-                EnumSet.of(Season.SUMMER),
-                EnumSet.of(Style.CASUAL, Style.OFFICE),
+                EnumSet.allOf(Season.class),
+                EnumSet.of(Style.OFFICE, Style.DATE),
                 "Navy",
-                "Top"
+                "Top",
+                null
         ));
 
         items.add(new Top(
-                "블랙 실키 셔츠",
-                EnumSet.of(Gender.MALE, Gender.FEMALE),
+                "흰 블라우스",
+                EnumSet.of(Gender.FEMALE),
                 EnumSet.of(Season.SPRING, Season.SUMMER, Season.FALL),
-                EnumSet.of(Style.PARTY, Style.DATE),
-                "Black",
-                "Top"
+                EnumSet.of(Style.PARTY, Style.DATE, Style.OFFICE),
+                "White",
+                "Top",
+                null
+        ));
+
+        items.add(new Top(
+                "핑크 블라우스",
+                EnumSet.of(Gender.FEMALE),
+                EnumSet.of(Season.SPRING, Season.SUMMER, Season.FALL),
+                EnumSet.of(Style.PARTY, Style.DATE, Style.OFFICE),
+                "Pink",
+                "Top",
+                null
         ));
 
         items.add(new Top(
@@ -193,17 +224,28 @@ public class ClothingRepository {
                 EnumSet.of(Season.FALL, Season.WINTER),
                 EnumSet.of(Style.PARTY, Style.DATE, Style.CASUAL),
                 "Black",
-                "Top"
+                "Top",
+                null
         ));
 
-        // 하의 -----------------------------------------------
+// 하의 -----------------------------------------------
         items.add(new Bottom(
-                "긴 청바지",
+                "긴 연청 바지",
                 EnumSet.allOf(Gender.class),
                 EnumSet.allOf(Season.class),
-                EnumSet.of(Style.CASUAL, Style.OFFICE),
+                EnumSet.of(Style.CASUAL, Style.OFFICE, Style.DATE),
                 "Blue",
-                "Bottom"
+                "Bottom",
+                null
+        ));
+        items.add(new Bottom(
+                "긴 중청 바지",
+                EnumSet.allOf(Gender.class),
+                EnumSet.allOf(Season.class),
+                EnumSet.of(Style.CASUAL, Style.OFFICE, Style.DATE),
+                "Blue",
+                "Bottom",
+                null
         ));
         items.add(new Bottom(
                 "청반바지",
@@ -211,7 +253,8 @@ public class ClothingRepository {
                 EnumSet.of(Season.SUMMER),
                 EnumSet.of(Style.CASUAL, Style.DATE),
                 "Blue",
-                "Bottom"
+                "Bottom",
+                null
         ));
 
         items.add(new Bottom(
@@ -220,34 +263,38 @@ public class ClothingRepository {
                 EnumSet.of(Season.SUMMER),
                 EnumSet.of(Style.CASUAL, Style.SPORTS, Style.DATE),
                 "Blue",
-                "Bottom"
+                "Bottom",
+                null
         ));
 
         items.add(new Bottom(
                 "검은 슬랙스",
                 EnumSet.allOf(Gender.class),
                 EnumSet.allOf(Season.class),
-                EnumSet.of(Style.OFFICE, Style.DATE),
+                EnumSet.of(Style.OFFICE, Style.DATE, Style.PARTY),
                 "Black",
-                "Bottom"
+                "Bottom",
+                null
         ));
 
         items.add(new Bottom(
                 "베이지 슬랙스",
                 EnumSet.allOf(Gender.class),
                 EnumSet.allOf(Season.class),
-                EnumSet.of(Style.OFFICE, Style.DATE),
+                EnumSet.of(Style.OFFICE, Style.DATE, Style.PARTY),
                 "Beige",
-                "Bottom"
+                "Bottom",
+                null
         ));
 
         items.add(new Bottom(
-                "베이지 린넨 슬랙스",
-                EnumSet.of(Gender.FEMALE),
-                EnumSet.of(Season.SUMMER),
-                EnumSet.of(Style.OFFICE, Style.DATE),
-                "Beige",
-                "Bottom"
+                "네이비 슬랙스",
+                EnumSet.of(Gender.FEMALE, Gender.MALE),
+                EnumSet.allOf(Season.class),
+                EnumSet.of(Style.OFFICE, Style.DATE, Style.PARTY),
+                "Navy",
+                "Bottom",
+                null
         ));
 
         items.add(new Bottom(
@@ -256,7 +303,17 @@ public class ClothingRepository {
                 EnumSet.of(Season.SPRING, Season.FALL, Season.WINTER),
                 EnumSet.of(Style.CASUAL, Style.SPORTS),
                 "Gray",
-                "Bottom"
+                "Bottom",
+                null
+        ));
+        items.add(new Bottom(
+                "회색 트레이닝 반바지",
+                EnumSet.allOf(Gender.class),
+                EnumSet.of(Season.SPRING, Season.SUMMER),
+                EnumSet.of(Style.CASUAL, Style.SPORTS),
+                "Gray",
+                "Bottom",
+                null
         ));
 
         items.add(new Bottom(
@@ -265,7 +322,8 @@ public class ClothingRepository {
                 EnumSet.of(Season.SPRING, Season.FALL, Season.WINTER),
                 EnumSet.of(Style.CASUAL, Style.SPORTS),
                 "Black",
-                "Bottom"
+                "Bottom",
+                null
         ));
 
         items.add(new Bottom(
@@ -274,7 +332,8 @@ public class ClothingRepository {
                 EnumSet.of(Season.SPRING, Season.SUMMER),
                 EnumSet.of(Style.CASUAL, Style.DATE, Style.PARTY),
                 "Beige",
-                "Bottom"
+                "Bottom",
+                null
         ));
         items.add(new Bottom(
                 "블랙 가죽 짧은 치마",
@@ -282,7 +341,8 @@ public class ClothingRepository {
                 EnumSet.of(Season.WINTER, Season.FALL),
                 EnumSet.of(Style.DATE, Style.PARTY),
                 "Black",
-                "Bottom"
+                "Bottom",
+                null
         ));
         items.add(new Bottom(
                 "블랙 가죽 짧은 바지",
@@ -290,7 +350,8 @@ public class ClothingRepository {
                 EnumSet.of(Season.WINTER, Season.FALL),
                 EnumSet.of(Style.DATE, Style.PARTY),
                 "Black",
-                "Bottom"
+                "Bottom",
+                null
         ));
         items.add(new Bottom(
                 "블랙 가죽 긴 바지",
@@ -298,7 +359,8 @@ public class ClothingRepository {
                 EnumSet.of(Season.WINTER, Season.FALL),
                 EnumSet.of(Style.DATE, Style.PARTY),
                 "Black",
-                "Bottom"
+                "Bottom",
+                null
         ));
         items.add(new Bottom(
                 "브라운 가죽 짧은 치마",
@@ -306,7 +368,8 @@ public class ClothingRepository {
                 EnumSet.of(Season.WINTER, Season.FALL),
                 EnumSet.of(Style.DATE, Style.PARTY),
                 "Brown",
-                "Bottom"
+                "Bottom",
+                null
         ));
         items.add(new Bottom(
                 "브라운 가죽 짧은 바지",
@@ -314,16 +377,18 @@ public class ClothingRepository {
                 EnumSet.of(Season.WINTER, Season.FALL),
                 EnumSet.of(Style.DATE, Style.PARTY),
                 "Brown",
-                "Bottom"
+                "Bottom",
+                null
         ));
 
         items.add(new Bottom(
-                "카키색 버뮤다 팬츠",
+                "카모 버뮤다 팬츠",
                 EnumSet.allOf(Gender.class),
                 EnumSet.of(Season.SUMMER),
                 EnumSet.of(Style.CASUAL, Style.DATE),
                 "Khaki",
-                "Bottom"
+                "Bottom",
+                null
         ));
 
         items.add(new Bottom(
@@ -332,7 +397,8 @@ public class ClothingRepository {
                 EnumSet.of(Season.SUMMER),
                 EnumSet.of(Style.CASUAL, Style.SPORTS),
                 "White",
-                "Bottom"
+                "Bottom",
+                null
         ));
         items.add(new Bottom(
                 "검은 반바지",
@@ -340,61 +406,50 @@ public class ClothingRepository {
                 EnumSet.of(Season.SUMMER),
                 EnumSet.of(Style.CASUAL, Style.SPORTS),
                 "Black",
-                "Bottom"
+                "Bottom",
+                null
         ));
 
         items.add(new Bottom(
                 "흰색 와이드 팬츠",
                 EnumSet.allOf(Gender.class),
                 EnumSet.of(Season.SPRING, Season.FALL, Season.WINTER),
-                EnumSet.of(Style.CASUAL, Style.OFFICE),
+                EnumSet.of(Style.CASUAL, Style.OFFICE, Style.DATE, Style.PARTY),
                 "White",
-                "Bottom"
-        ));
-        items.add(new Bottom(
-                "화이트 코튼 팬츠",
-                EnumSet.allOf(Gender.class),
-                EnumSet.of(Season.SUMMER),
-                EnumSet.of(Style.CASUAL, Style.OFFICE, Style.PARTY),
-                "White",
-                "Bottom"
+                "Bottom",
+                null
         ));
 
-        items.add(new Bottom(
-                "블랙 데님 팬츠",
-                EnumSet.allOf(Gender.class),
-                EnumSet.allOf(Season.class),
-                EnumSet.of(Style.CASUAL, Style.DATE, Style.OFFICE),
-                "Black",
-                "Bottom"
-        ));
 
-        // 신발 -----------------------------------------------
+// 신발 -----------------------------------------------
         items.add(new Shoes(
                 "흰 운동화",
                 EnumSet.allOf(Gender.class),
                 EnumSet.of(Season.SPRING, Season.SUMMER, Season.FALL),
-                EnumSet.of(Style.CASUAL, Style.SPORTS, Style.DATE, Style.OFFICE),
+                EnumSet.allOf(Style.class),
                 "White",
-                "Shoes"
+                "Shoes",
+                null
         ));
 
         items.add(new Shoes(
                 "검은 운동화",
                 EnumSet.allOf(Gender.class),
                 EnumSet.of(Season.SPRING, Season.SUMMER, Season.FALL),
-                EnumSet.of(Style.CASUAL, Style.SPORTS, Style.DATE, Style.OFFICE),
+                EnumSet.allOf(Style.class),
                 "Black",
-                "Shoes"
+                "Shoes",
+                null
         ));
 
         items.add(new Shoes(
                 "갈색 로퍼",
-                EnumSet.allOf(Gender.class),
+                EnumSet.of(Gender.FEMALE),
                 EnumSet.of(Season.SPRING, Season.FALL),
                 EnumSet.of(Style.OFFICE, Style.DATE),
                 "Brown",
-                "Shoes"
+                "Shoes",
+                null
         ));
 
         items.add(new Shoes(
@@ -403,16 +458,18 @@ public class ClothingRepository {
                 EnumSet.allOf(Season.class),
                 EnumSet.of(Style.OFFICE, Style.PARTY, Style.DATE),
                 "Black",
-                "Shoes"
+                "Shoes",
+                null
         ));
 
         items.add(new Shoes(
-                "베이지 샌들",
+                "블랙 샌들",
                 EnumSet.allOf(Gender.class),
                 EnumSet.of(Season.SUMMER),
-                EnumSet.of(Style.CASUAL, Style.DATE),
-                "Beige",
-                "Shoes"
+                EnumSet.of(Style.CASUAL, Style.DATE, Style.SPORTS),
+                "Black",
+                "Shoes",
+                null
         ));
         items.add(new Shoes(
                 "베이지 어그부츠",
@@ -420,7 +477,8 @@ public class ClothingRepository {
                 EnumSet.of(Season.WINTER),
                 EnumSet.of(Style.CASUAL, Style.DATE, Style.SPORTS),
                 "Beige",
-                "Shoes"
+                "Shoes",
+                null
         ));
 
         items.add(new Shoes(
@@ -429,7 +487,8 @@ public class ClothingRepository {
                 EnumSet.allOf(Season.class),
                 EnumSet.of(Style.DATE, Style.PARTY),
                 "Black",
-                "Shoes"
+                "Shoes",
+                null
         ));
 
         items.add(new Shoes(
@@ -438,7 +497,8 @@ public class ClothingRepository {
                 EnumSet.allOf(Season.class),
                 EnumSet.of(Style.DATE, Style.PARTY),
                 "Red",
-                "Shoes"
+                "Shoes",
+                null
         ));
 
         items.add(new Shoes(
@@ -447,17 +507,19 @@ public class ClothingRepository {
                 EnumSet.of(Season.SPRING, Season.FALL, Season.WINTER),
                 EnumSet.of(Style.CASUAL, Style.PARTY, Style.DATE),
                 "Black",
-                "Shoes"
+                "Shoes",
+                null
         ));
 
-        // 악세사리
+// 악세사리
         items.add(new Accessory(
                 "갈색 가죽 시계",
                 EnumSet.allOf(Gender.class),
                 EnumSet.allOf(Season.class),
                 EnumSet.of(Style.OFFICE, Style.DATE, Style.PARTY),
                 "Brown",
-                "Accessory"
+                "Accessory",
+                null
         ));
         items.add(new Accessory(
                 "블랙 타이",
@@ -465,7 +527,8 @@ public class ClothingRepository {
                 EnumSet.allOf(Season.class),
                 EnumSet.of(Style.OFFICE, Style.PARTY),
                 "Black",
-                "Accessory"
+                "Accessory",
+                null
         ));
 
         items.add(new Accessory(
@@ -474,7 +537,8 @@ public class ClothingRepository {
                 EnumSet.allOf(Season.class),
                 EnumSet.of(Style.SPORTS, Style.CASUAL),
                 "White",
-                "Accessory"
+                "Accessory",
+                null
         ));
 
         items.add(new Accessory(
@@ -483,7 +547,8 @@ public class ClothingRepository {
                 EnumSet.allOf(Season.class),
                 EnumSet.of(Style.SPORTS, Style.CASUAL),
                 "Black",
-                "Accessory"
+                "Accessory",
+                null
         ));
 
         items.add(new Accessory(
@@ -492,7 +557,8 @@ public class ClothingRepository {
                 EnumSet.allOf(Season.class),
                 EnumSet.of(Style.DATE, Style.PARTY),
                 "Silver",
-                "Accessory"
+                "Accessory",
+                null
         ));
 
         items.add(new Accessory(
@@ -501,7 +567,8 @@ public class ClothingRepository {
                 EnumSet.allOf(Season.class),
                 EnumSet.of(Style.DATE, Style.PARTY),
                 "Silver",
-                "Accessory"
+                "Accessory",
+                null
         ));
 
         items.add(new Accessory(
@@ -510,16 +577,27 @@ public class ClothingRepository {
                 EnumSet.allOf(Season.class),
                 EnumSet.of(Style.DATE, Style.PARTY),
                 "Silver",
-                "Accessory"
+                "Accessory",
+                null
         ));
 
         items.add(new Accessory(
                 "블랙 벨트",
                 EnumSet.allOf(Gender.class),
                 EnumSet.allOf(Season.class),
-                EnumSet.of(Style.OFFICE, Style.DATE),
+                EnumSet.of(Style.OFFICE, Style.DATE, Style.PARTY),
                 "Black",
-                "Accessory"
+                "Accessory",
+                null
+        ));
+        items.add(new Accessory(
+                "브라운 벨트",
+                EnumSet.allOf(Gender.class),
+                EnumSet.allOf(Season.class),
+                EnumSet.of(Style.OFFICE, Style.DATE, Style.PARTY),
+                "Brown",
+                "Accessory",
+                null
         ));
 
         items.add(new Accessory(
@@ -528,7 +606,8 @@ public class ClothingRepository {
                 EnumSet.allOf(Season.class),
                 EnumSet.of(Style.CASUAL, Style.SPORTS),
                 "Black",
-                "Accessory"
+                "Accessory",
+                null
         ));
         items.add(new Accessory(
                 "화이트 볼캡",
@@ -536,7 +615,8 @@ public class ClothingRepository {
                 EnumSet.allOf(Season.class),
                 EnumSet.of(Style.CASUAL, Style.SPORTS),
                 "White",
-                "Accessory"
+                "Accessory",
+                null
         ));
         items.add(new Accessory(
                 "블루 볼캡",
@@ -544,7 +624,8 @@ public class ClothingRepository {
                 EnumSet.allOf(Season.class),
                 EnumSet.of(Style.CASUAL, Style.SPORTS),
                 "Blue",
-                "Accessory"
+                "Accessory",
+                null
         ));
 
         items.add(new Accessory(
@@ -553,16 +634,28 @@ public class ClothingRepository {
                 EnumSet.of(Season.SPRING, Season.FALL, Season.WINTER),
                 EnumSet.of(Style.CASUAL, Style.SPORTS),
                 "Black",
-                "Accessory"
+                "Accessory",
+                null
         ));
 
         items.add(new Accessory(
                 "회색 비니",
                 EnumSet.allOf(Gender.class),
                 EnumSet.of(Season.FALL, Season.WINTER),
-                EnumSet.of(Style.CASUAL, Style.SPORTS),
+                EnumSet.of(Style.CASUAL, Style.SPORTS, Style.DATE),
                 "Gray",
-                "Accessory"
+                "Accessory",
+                null
+        ));
+
+        items.add(new Accessory(
+                "블랙 비니",
+                EnumSet.allOf(Gender.class),
+                EnumSet.of(Season.FALL, Season.WINTER),
+                EnumSet.of(Style.CASUAL, Style.SPORTS, Style.DATE),
+                "Black",
+                "Accessory",
+                null
         ));
 
         items.add(new Accessory(
@@ -571,7 +664,28 @@ public class ClothingRepository {
                 EnumSet.allOf(Season.class),
                 EnumSet.of(Style.CASUAL, Style.DATE),
                 "Brown",
-                "Accessory"
+                "Accessory",
+                null
+        ));
+
+        items.add(new Accessory(
+                "실버 체인 팔찌",
+                EnumSet.allOf(Gender.class),
+                EnumSet.allOf(Season.class),
+                EnumSet.of(Style.CASUAL, Style.DATE, Style.PARTY),
+                "Silver",
+                "Accessory",
+                null
+        ));
+
+        items.add(new Accessory(
+                "골드 체인 팔찌",
+                EnumSet.allOf(Gender.class),
+                EnumSet.allOf(Season.class),
+                EnumSet.of(Style.CASUAL, Style.DATE, Style.PARTY),
+                "Gold",
+                "Accessory",
+                null
         ));
 
         items.add(new Accessory(
@@ -580,7 +694,20 @@ public class ClothingRepository {
                 EnumSet.of(Season.SPRING, Season.SUMMER),
                 EnumSet.of(Style.CASUAL, Style.PARTY, Style.DATE),
                 "Black",
-                "Accessory"
+                "Accessory",
+                null
         ));
+
+        items.add(new Accessory(
+                "뿔테 안경",
+                EnumSet.allOf(Gender.class),
+                EnumSet.allOf(Season.class),
+                EnumSet.of(Style.CASUAL, Style.PARTY, Style.DATE, Style.OFFICE),
+                "Black",
+                "Accessory",
+                null
+        ));
+
     }
+
 }
