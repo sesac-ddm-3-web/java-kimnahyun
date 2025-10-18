@@ -40,7 +40,7 @@ public class Main {
                     play = false;
                     break;
                 default:
-                    System.out.println("1, 2, 3만 선택해주세요");
+                    System.out.println("1, 2, 3만 선택해주세요\n");
                     break;
             }
         }
