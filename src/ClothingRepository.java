@@ -390,6 +390,15 @@ public class ClothingRepository {
                 "Bottom",
                 null
         ));
+        items.add(new Bottom(
+                "카모 팬츠",
+                EnumSet.allOf(Gender.class),
+                EnumSet.of(Season.SPRING, Season.WINTER, Season.FALL),
+                EnumSet.of(Style.CASUAL, Style.DATE, Style.PARTY),
+                "Khaki",
+                "Bottom",
+                null
+        ));
 
         items.add(new Bottom(
                 "흰 반바지",
@@ -425,7 +434,7 @@ public class ClothingRepository {
         items.add(new Shoes(
                 "흰 운동화",
                 EnumSet.allOf(Gender.class),
-                EnumSet.of(Season.SPRING, Season.SUMMER, Season.FALL),
+                EnumSet.allOf(Season.class),
                 EnumSet.allOf(Style.class),
                 "White",
                 "Shoes",
@@ -435,7 +444,16 @@ public class ClothingRepository {
         items.add(new Shoes(
                 "검은 운동화",
                 EnumSet.allOf(Gender.class),
-                EnumSet.of(Season.SPRING, Season.SUMMER, Season.FALL),
+                EnumSet.allOf(Season.class),
+                EnumSet.allOf(Style.class),
+                "Black",
+                "Shoes",
+                null
+        ));
+        items.add(new Shoes(
+                "검은 스니커즈",
+                EnumSet.allOf(Gender.class),
+                EnumSet.allOf(Season.class),
                 EnumSet.allOf(Style.class),
                 "Black",
                 "Shoes",
@@ -445,7 +463,7 @@ public class ClothingRepository {
         items.add(new Shoes(
                 "갈색 로퍼",
                 EnumSet.of(Gender.FEMALE),
-                EnumSet.of(Season.SPRING, Season.FALL),
+                EnumSet.of(Season.SPRING, Season.FALL, Season.WINTER),
                 EnumSet.of(Style.OFFICE, Style.DATE),
                 "Brown",
                 "Shoes",
@@ -477,6 +495,26 @@ public class ClothingRepository {
                 EnumSet.of(Season.WINTER),
                 EnumSet.of(Style.CASUAL, Style.DATE, Style.SPORTS),
                 "Beige",
+                "Shoes",
+                null
+        ));
+
+        items.add(new Shoes(
+                "블랙 롱부츠",
+                EnumSet.of(Gender.FEMALE),
+                EnumSet.of(Season.WINTER, Season.FALL, Season.SPRING),
+                EnumSet.of(Style.CASUAL, Style.DATE, Style.PARTY),
+                "Black",
+                "Shoes",
+                null
+        ));
+
+        items.add(new Shoes(
+                "브라운 롱부츠",
+                EnumSet.of(Gender.FEMALE),
+                EnumSet.of(Season.WINTER, Season.FALL, Season.SPRING),
+                EnumSet.of(Style.CASUAL, Style.DATE, Style.PARTY),
+                "Brown",
                 "Shoes",
                 null
         ));

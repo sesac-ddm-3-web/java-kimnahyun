@@ -1,5 +1,4 @@
 import clothingitem.ClothingItem;
-import clothingitem.Top;
 
 import javax.swing.*;
 import java.awt.*;
