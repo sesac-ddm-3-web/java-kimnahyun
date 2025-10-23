@@ -26,17 +26,19 @@ public class Main {
             switch (choice) {
                 case 1:
                     System.out.println("===== 메뉴 상세 정보 =====");
+
+                    // 메뉴 출력
                     restaurant.displayMenu(MenuCategory.MAIN_DISH);
                     restaurant.displayMenu(MenuCategory.SIDE_DISH);
-                    restaurant.displayMenu(MenuCategory.DESSERT);
                     restaurant.displayMenu(MenuCategory.BEVERAGE);
+                    restaurant.displayMenu(MenuCategory.DESSERT);
                     break;
                 case 2:
                     currentOrder = restaurant.createOrder();
                     break;
                 case 3:
                     if (currentOrder == null) {
-                        System.out.println("먼저 주문을 생성하세요. (2번)");
+                        System.out.println("먼저 주문을 생성하세요. (2번) ⚠️⚠️\n");
                         break;
                     }
 

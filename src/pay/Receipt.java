@@ -16,7 +16,7 @@ public class Receipt {
             String name =  item.getMenuItem().getName();
             int count = item.getQuantity();
             int subtotal = item.getSubtotal();
-            System.out.println( name + " x " + count + " = " + );
+            System.out.println( name + " x " + count + " = " + subtotal );
 
         }
 
