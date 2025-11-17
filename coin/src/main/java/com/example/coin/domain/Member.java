@@ -1,7 +1,10 @@
 package com.example.coin.domain;
 
+import lombok.Getter;
+
 import java.util.concurrent.atomic.AtomicLong;
 
+@Getter
 public class Member {
     private static final AtomicLong sequence = new AtomicLong(0L);
 
@@ -15,22 +18,6 @@ public class Member {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.songCount = 0;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public int getSongCount() {
-        return songCount;
     }
 
     public void setSongCount(int songCount) {

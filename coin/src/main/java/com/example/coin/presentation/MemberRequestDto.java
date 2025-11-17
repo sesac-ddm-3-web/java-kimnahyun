@@ -3,7 +3,9 @@ package com.example.coin.presentation;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import lombok.Getter;
 
+@Getter
 public class MemberRequestDto {
 
     @NotNull
@@ -14,14 +16,4 @@ public class MemberRequestDto {
     @NotBlank
     @Pattern(regexp = "^\\d{3}-\\d{4}-\\d{4}$")
     String phoneNumber;
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-
 }
