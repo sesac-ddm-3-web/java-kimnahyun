@@ -3,8 +3,6 @@ package com.example.coin.presentation;
 import com.example.coin.application.CoinService;
 import com.example.coin.domain.Member;
 import com.example.coin.domain.Room;
-import com.example.coin.domain.RoomRepository;
-import com.example.coin.domain.RoomStatus;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

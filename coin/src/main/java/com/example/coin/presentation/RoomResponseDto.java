@@ -8,7 +8,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RoomResponseDto {
-
     Long id;
     int roomNumber;
     RoomStatus status;

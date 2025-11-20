@@ -1,7 +1,5 @@
 package com.example.coin;
 
-import com.example.coin.domain.Room;
-import jakarta.annotation.PostConstruct;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

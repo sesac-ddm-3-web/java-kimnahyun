@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin API Client</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        /* === [수정된 부분] Flexbox를 사용한 레이아웃 === */
+        .container {
+            display: flex; /* 자식 요소들을 가로로 배열 */
+            gap: 20px; /* 섹션 간의 간격 */
+        }
+
+        .api-controls {
+            flex: 1; /* 왼쪽 영역이 남은 공간을 차지 (버튼, 입력) */
+            min-width: 400px;
+        }
+
+        .result-display {
+            flex: 1; /* 오른쪽 영역이 남은 공간을 차지 (결과) */
+            min-width: 400px;
+        }
+        /* =========================================== */
+
+        .api-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        .api-section h3 {
+            margin-top: 0;
+            color: #5a5a5a;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"] {
+            padding: 8px;
+            margin-top: 5px;
+            width: calc(100% - 16px); /* 부모 너비에 맞게 조정 */
+            box-sizing: border-box; /* 패딩이 너비에 포함되도록 설정 */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        pre {
+            background-color: #272822; /* 다크 테마 배경 */
+            color: #f8f8f2; /* 밝은 텍스트 */
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            min-height: 700px; /* 결과 영역 최소 높이 */
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🎤 Coin 노래방 API 클라이언트</h1>
+
+<div class="container">
+    <div class="api-controls">
+        <div class="api-section">
+            <h3>1. 회원가입 (POST /coin/member)</h3>
+            <label for="reg-name">이름:</label>
+            <input type="text" id="reg-name" value="홍길동">
+            <label for="reg-phone">전화번호 (예: 010-1234-5678):</label>
+            <input type="text" id="reg-phone" value="010-1234-5678">
+            <button onclick="createMember()">회원가입</button>
+        </div>
+
+        <div class="api-section">
+            <h3>2. 회원 정보 조회 (GET /coin/{phoneNumber})</h3>
+            <label for="get-phone">조회할 전화번호:</label>
+            <input type="text" id="get-phone" value="010-1234-5678">
+            <button onclick="getMemberInformation()">정보 조회</button>
+        </div>
+
+        <div class="api-section">
+            <h3>3. 전체 회원 조회 (GET /coin/members)</h3>
+            <button onclick="getAllMember()">전체 회원 조회</button>
+        </div>
+
+        <div class="api-section">
+            <h3>4. 곡 수 추가 (PATCH /coin/add)</h3>
+            <label for="add-phone">전화번호:</label>
+            <input type="text" id="add-phone" value="010-1234-5678">
+            <label for="add-count">추가할 곡 수:</label>
+            <input type="number" id="add-count" value="3">
+            <button onclick="addSongCount()">곡 수 추가</button>
+        </div>
+
+        <div class="api-section">
+            <h3>5. 곡 수 차감 + 방 선택 (PATCH /coin/use)</h3>
+            <label for="use-phone">전화번호:</label>
+            <input type="text" id="use-phone" value="010-1234-5678">
+            <label for="use-count">차감할 곡 수:</label>
+            <input type="number" id="use-count" value="2">
+            <label for="use-roomnum">사용할 방 번호 (예: 1):</label>
+            <input type="number" id="use-roomnum" value="1">
+            <button onclick="useSongCount()">곡 사용 및 방 선택</button>
+        </div>
+
+        <div class="api-section">
+            <h3>6. 방 상태 변경 (PATCH /coin/room)</h3>
+            <label for="room-num">방 번호:</label>
+            <input type="number" id="room-num" value="2">
+            <label for="room-status">새 상태 (예: available, inspection):</label>
+            <input type="text" id="room-status" value="inspection">
+            <button onclick="changeRoomStatus()">방 상태 변경</button>
+        </div>
+
+        <div class="api-section">
+            <h3>7. 방 전체 조회 (GET /coin/rooms)</h3>
+            <button onclick="getAllRoom()">전체 방 조회</button>
+        </div>
+    </div>
+
+    <div class="result-display">
+        <h2>🎉 응답 결과</h2>
+        <pre id="result"></pre>
+    </div>
+</div>
+<script>
+        // ... (JavaScript 코드는 이전과 동일합니다.)
+        const BASE_URL = 'http://localhost:8080/coin';
+
+        const resultElement = document.getElementById('result');
+
+        // 결과 표시 함수
+        function displayResult(data) {
+            resultElement.textContent = JSON.stringify(data, null, 2);
+        }
+
+        // 에러 표시 함수
+        function handleError(error, endpoint) {
+            console.error(endpoint, error);
+            displayResult({
+                error: "요청 실패",
+                message: error.message || "서버에 연결할 수 없거나 요청 처리 중 오류가 발생했습니다.",
+                endpoint: endpoint
+            });
+        }
+
+        // 1. 회원가입
+        async function createMember() {
+            const name = document.getElementById('reg-name').value;
+            const phoneNumber = document.getElementById('reg-phone').value;
+            const endpoint = `${BASE_URL}/member`;
+            try {
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, phoneNumber })
+                });
+                const data = await response.json();
+                displayResult(data);
+            } catch (error) {
+                handleError(error, endpoint);
+            }
+        }
+
+        // 2. 회원 정보 조회
+        async function getMemberInformation() {
+            const phoneNumber = document.getElementById('get-phone').value;
+            const endpoint = `${BASE_URL}/${phoneNumber}`;
+            try {
+                const response = await fetch(endpoint, { method: 'GET' });
+                const data = await response.json();
+                displayResult(data);
+            } catch (error) {
+                handleError(error, endpoint);
+            }
+        }
+
+        // 3. 전체 회원 조회
+        async function getAllMember() {
+            const endpoint = `${BASE_URL}/members`;
+            try {
+                const response = await fetch(endpoint, { method: 'GET' });
+                const data = await response.json();
+                displayResult(data);
+            } catch (error) {
+                handleError(error, endpoint);
+            }
+        }
+
+        // 4. 곡 수 추가
+        async function addSongCount() {
+            const phoneNumber = document.getElementById('add-phone').value;
+            const count = document.getElementById('add-count').value;
+            const endpoint = `${BASE_URL}/add?phonenum=${phoneNumber}&count=${count}`;
+            try {
+                const response = await fetch(endpoint, { method: 'PATCH' });
+                const data = await response.json();
+                displayResult(data);
+            } catch (error) {
+                handleError(error, endpoint);
+            }
+        }
+
+        // 5. 곡 수 차감 + 방 선택
+        async function useSongCount() {
+            const phoneNumber = document.getElementById('use-phone').value;
+            const count = document.getElementById('use-count').value;
+            const roomNum = document.getElementById('use-roomnum').value;
+            const endpoint = `${BASE_URL}/use?phonenum=${phoneNumber}&count=${count}&roomnum=${roomNum}`;
+            try {
+                const response = await fetch(endpoint, { method: 'PATCH' });
+                const data = await response.json();
+                displayResult(data);
+            } catch (error) {
+                handleError(error, endpoint);
+            }
+        }
+
+        // 6. 방 상태 변경
+        async function changeRoomStatus() {
+            const roomNum = document.getElementById('room-num').value;
+            const roomStatus = document.getElementById('room-status').value;
+            const endpoint = `${BASE_URL}/room?roomnum=${roomNum}&status=${roomStatus}`;
+            try {
+                const response = await fetch(endpoint, { method: 'PATCH' });
+                const data = await response.json();
+                displayResult(data);
+            } catch (error) {
+                handleError(error, endpoint);
+            }
+        }
+
+        // 7. 방 전체 조회
+        async function getAllRoom() {
+            const endpoint = `${BASE_URL}/rooms`;
+            try {
+                const response = await fetch(endpoint, { method: 'GET' });
+                const data = await response.json();
+                displayResult(data);
+            } catch (error) {
+                handleError(error, endpoint);
+            }
+        }
+
+    </script>
+</body>
+</html>

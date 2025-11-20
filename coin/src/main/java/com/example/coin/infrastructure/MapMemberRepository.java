@@ -15,7 +15,6 @@ public class MapMemberRepository implements MemberRepository {
 
     private Map<String, Member> members = new HashMap<>();
 
-
     @Override
     public void saveMember(Member member) {
         members.put(member.getPhoneNumber(), member);
