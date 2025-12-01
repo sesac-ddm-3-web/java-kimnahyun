@@ -1,16 +1,15 @@
 package com.project.notice.application;
 
 import com.project.notice.domain.Comment;
+import com.project.notice.domain.Member;
+import com.project.notice.domain.Post;
 import com.project.notice.infrastructure.CommentJpaRepository;
 import com.project.notice.infrastructure.PostJpaRepository;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-import com.project.notice.domain.Member;
-import com.project.notice.domain.Post;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class CommentService {
