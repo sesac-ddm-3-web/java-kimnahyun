@@ -1,4 +1,4 @@
-package com.example.coin.presentation;
+package com.example.coin.presentation.dto;
 
 import com.example.coin.domain.Member;
 import lombok.Getter;

@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface MemberRepository {
     void saveMember(Member member);
-    Member findMemberByPhoneNumber(String phoneNumber);
+    Member findByPhoneNumber(String phoneNumber);
 
     List<Member> findAllMembers();
 }

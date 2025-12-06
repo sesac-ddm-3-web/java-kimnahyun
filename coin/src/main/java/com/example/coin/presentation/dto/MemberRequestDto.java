@@ -1,4 +1,4 @@
-package com.example.coin.presentation;
+package com.example.coin.presentation.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

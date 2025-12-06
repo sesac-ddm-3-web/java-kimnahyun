@@ -21,7 +21,7 @@ public class MapMemberRepository implements MemberRepository {
     }
 
     @Override
-    public Member findMemberByPhoneNumber(String phoneNumber) {
+    public Member findByPhoneNumber(String phoneNumber) {
         return members.get(phoneNumber);
     }
 

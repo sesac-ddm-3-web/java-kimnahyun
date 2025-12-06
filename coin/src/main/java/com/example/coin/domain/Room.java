@@ -1,5 +1,7 @@
 package com.example.coin.domain;
 
+import com.example.coin.global.BusinessException;
+import com.example.coin.global.ErrorCode;
 import lombok.Getter;
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -18,7 +20,11 @@ public class Room {
         this.status = RoomStatus.FINISHED;
     }
 
-    public void setStatus(RoomStatus status) {
-        this.status = status;
+    public void changeStatus(RoomStatus newStatus) {
+        if (this.status == RoomStatus.INSPECTION && newStatus == RoomStatus.USING) {
+            throw new BusinessException(ErrorCode.ROOM_UNAVAILABLE);
+        }
+
+        this.status = newStatus;
     }
 }
