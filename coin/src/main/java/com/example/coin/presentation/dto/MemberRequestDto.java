@@ -16,4 +16,11 @@ public class MemberRequestDto {
     @NotBlank
     @Pattern(regexp = "^\\d{3}-\\d{4}-\\d{4}$")
     String phoneNumber;
+
+    public MemberRequestDto(String name, String phoneNumber) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+    }
+
+    protected MemberRequestDto() {}
 }

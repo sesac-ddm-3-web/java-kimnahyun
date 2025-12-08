@@ -36,7 +36,7 @@ public class MemberController {
     // 회원 정보 조회
     @RequestMapping(value = "/members/{phoneNumber}", method = RequestMethod.GET)
     public ResponseEntity<MemberResponseDto> getMemberInformation(
-            @PathVariable String phoneNumber
+            @PathVariable("phoneNumber") String phoneNumber
     ) {
         MemberResponseDto memberResponseDto = memberService.getMemberInformation(phoneNumber);
         return ResponseEntity.ok(memberResponseDto);
@@ -51,7 +51,7 @@ public class MemberController {
     // 곡 수 추가 PATCH /members/{phoneNumber}/songs?count=3
     @RequestMapping(value = "/members/{phoneNumber}/songs", method = RequestMethod.PATCH)
     public ResponseEntity<MemberResponseDto> addSongCount(
-            @PathVariable String phoneNumber,
+            @PathVariable("phoneNumber") String phoneNumber,
             @RequestParam("count") int count
     ) {
         MemberResponseDto memberResponseDto = memberService.addSongCount(phoneNumber, count);
@@ -61,7 +61,7 @@ public class MemberController {
     //곡 수 차감 + 방 선택 PATCH /members/{phoneNumber}/use?count=2&roomNum=1
     @RequestMapping(value = "/members/{phoneNumber}/use", method = RequestMethod.PATCH)
     public ResponseEntity<UseRoomResponseDto> useSongCount(
-            @PathVariable String phoneNumber,
+            @PathVariable("phoneNumber") String phoneNumber,
             @RequestParam("count") int count,
             @RequestParam("roomnum") int roomNum
     ) {
