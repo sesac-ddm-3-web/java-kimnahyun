@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Coin 노래방 API 테스트</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background-color: #f6f4fb;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* 왼쪽 기능 구역 */
+        .left-panel {
+            width: 45%;
+            padding: 25px;
+            overflow-y: auto;
+            background: white;
+            border-right: 3px solid #e0d9ff;
+        }
+
+        h1 {
+            color: #6a5acd;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #4b3fbf;
+            margin-bottom: 10px;
+        }
+
+        .box {
+            background: #ffffff;
+            border: 2px solid #e3dcff;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 25px;
+        }
+
+        input {
+            margin: 6px 0;
+            width: 90%;
+            padding: 7px;
+            border-radius: 6px;
+            border: 1px solid #c7befa;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: #6a5acd;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+
+        button:hover {
+            background-color: #5948d6;
+        }
+
+        /* 오른쪽 결과 구역 */
+        .right-panel {
+            width: 55%;
+            padding: 25px;
+            background-color: #f3f0ff;
+        }
+
+        #result {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 15px;
+            height: 95%;
+            overflow-y: auto;
+            border: 2px solid #d8ceff;
+            white-space: pre-wrap;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+<!-- 왼쪽 기능 영역 -->
+<div class="left-panel">
+    <h1>Coin 노래방 API 테스트</h1>
+
+    <!-- 회원가입 -->
+    <div class="box">
+        <h2>회원가입 (POST /members)</h2>
+        <input id="name" placeholder="이름">
+        <input id="phoneNumber" placeholder="010-0000-0000">
+        <button onclick="createMember()">회원가입</button>
+    </div>
+
+    <!-- 특정 회원 조회 -->
+    <div class="box">
+        <h2>회원 조회 (GET /members/{phone})</h2>
+        <input id="getPhone" placeholder="전화번호">
+        <button onclick="getMember()">조회</button>
+    </div>
+
+    <!-- 전체 회원 조회 -->
+    <div class="box">
+        <h2>전체 회원 조회 (GET /members)</h2>
+        <button onclick="getAllMembers()">조회</button>
+    </div>
+
+    <!-- 곡 수 추가 -->
+    <div class="box">
+        <h2>곡 수 추가 (PATCH /members/{phone}/songs)</h2>
+        <input id="addPhone" placeholder="전화번호">
+        <input id="addCount" type="number" placeholder="추가 곡 수">
+        <button onclick="addSongs()">추가</button>
+    </div>
+
+    <!-- 곡 사용 + 방 선택 -->
+    <div class="box">
+        <h2>곡 사용 + 방 선택 (PATCH /members/{phone}/use)</h2>
+        <input id="usePhone" placeholder="전화번호">
+        <input id="useCount" type="number" placeholder="사용할 곡 수">
+        <input id="useRoom" type="number" placeholder="방 번호">
+        <button onclick="useRoom()">사용하기</button>
+    </div>
+
+    <!-- 방 전체 조회 -->
+    <div class="box">
+        <h2>전체 방 조회 (GET /rooms)</h2>
+        <button onclick="getAllRooms()">조회</button>
+    </div>
+
+    <!-- 방 상태 변경 -->
+    <div class="box">
+        <h2>방 상태 변경 (PATCH /rooms/{roomNum}/status)</h2>
+        <input id="statusRoomNum" type="number" placeholder="방 번호">
+        <input id="statusValue" placeholder="using / finished / inspection">
+        <button onclick="changeStatus()">변경</button>
+    </div>
+</div>
+
+
+<!-- 오른쪽 결과 영역 -->
+<div class="right-panel">
+    <h2 style="color:#6a5acd; font-size:22px;">API 응답 결과</h2>
+    <pre id="result">여기에 응답이 표시됩니다.</pre>
+</div>
+
+
+<script>
+// 공통 결과 출력
+function showResult(data) {
+    document.getElementById("result").textContent =
+        typeof data === 'string' ? data : JSON.stringify(data, null, 2);
+}
+
+// 공통 fetch 처리 함수  (성공 → JSON, 실패 → TEXT)
+async function handleResponse(res) {
+    if (!res.ok) {
+        const text = await res.text();   // 실패는 문자열(body)
+        return showResult(text);
+    }
+
+    const json = await res.json();       // 성공은 JSON
+    return showResult(json);
+}
+
+
+
+// 1) 회원가입
+function createMember() {
+    fetch("/members", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            name: document.getElementById("name").value,
+            phoneNumber: document.getElementById("phoneNumber").value
+        })
+    })
+    .then(handleResponse)
+    .catch(showResult);
+}
+
+
+
+// 2) 특정 회원 조회
+function getMember() {
+    const phone = document.getElementById("getPhone").value;
+
+    fetch(`/members/${phone}`)
+        .then(handleResponse)
+        .catch(showResult);
+}
+
+
+
+// 3) 전체 회원 조회
+function getAllMembers() {
+    fetch("/members")
+        .then(handleResponse)
+        .catch(showResult);
+}
+
+
+
+// 4) 곡 수 추가
+function addSongs() {
+    const phone = document.getElementById("addPhone").value;
+    const count = document.getElementById("addCount").value;
+
+    fetch(`/members/${phone}/songs?count=${count}`, {
+        method: "PATCH"
+    })
+    .then(handleResponse)
+    .catch(showResult);
+}
+
+
+
+// 5) 곡 사용 + 방 선택
+function useRoom() {
+    const phone = document.getElementById("usePhone").value;
+    const count = document.getElementById("useCount").value;
+    const room = document.getElementById("useRoom").value;
+
+    fetch(`/members/${phone}/use?count=${count}&roomnum=${room}`, {
+        method: "PATCH"
+    })
+    .then(handleResponse)
+    .catch(showResult);
+}
+
+
+
+// 6) 전체 방 조회
+function getAllRooms() {
+    fetch("/rooms")
+        .then(handleResponse)
+        .catch(showResult);
+}
+
+
+
+// 7) 방 상태 변경
+function changeStatus() {
+    const room = document.getElementById("statusRoomNum").value;
+    const status = document.getElementById("statusValue").value;
+
+    fetch(`/rooms/${room}/status?status=${status}`, {
+        method: "PATCH"
+    })
+    .then(handleResponse)
+    .catch(showResult);
+}
+
+
+</script>
+
+</body>
+</html>
